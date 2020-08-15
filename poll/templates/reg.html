@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>reg</title>
+    <meta name="viewport" content="width=device-width,intial-scale=1.0">
+    </head>
+    <body>
+        <form action="{% url 'signup' %}" method="post">
+            <input type="text" name="fname" placeholder="Enter first name">
+            <input type="text" name="lname" placeholder="Enter last name">
+            <input type="text" name="uname" placeholder="Enter user name">
+            <input type="password" name="psw" placeholder="Enter password">
+            <input type="email" name="email" placeholder="Enter mail id">
+            <button type="submit" value="submit">Register</button>
+
+        </form>
+    </body>
+    </html>

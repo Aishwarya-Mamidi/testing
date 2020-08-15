@@ -4,12 +4,12 @@ import requests
 # Create your views here.
 from .models import Adminl
 from .models import SignUp
-
+from .forms import SignUpForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 
 def open(request):
-    return render(request,'login.html')
+    return render(request,'reg.html')
 '''
 ef logi(request):
     l=Adminl.objects.all()
@@ -40,17 +40,19 @@ def loginpage(request):
 
 def loginUser(request):
     if request.method=='POST':
-        uname=request.POST.get("uname")
-        psw=request.POST.get("psw")
+        uname=request.POST['uname']
+        psw=request.POST['psw']
         print("hlo")
         user=authenticate(request,uname=uname,psw=psw)
         print("hii")
+
         if user is not None:
             print("hey")
             login(request,user)
-            return render(request,'homepage.html')
+            return redirect('home')
         else:
             messages.info(request,"Invalid Credentials")
+            return redirect('loginUser')
 
     else:
         context={}
@@ -58,7 +60,17 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('loginpage')
+    return redirect('loginUser')
 
 def home(request):
     return render(request,'homepage.html')
+
+def signup(request):
+    if request.method=='POST':
+        form=SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form=SignUpForm()
+        return render(request,'reg.html',{'form':form})
