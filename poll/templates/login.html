@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <title>login</title>
+    <meta name="viewport" content="width=device-width,intial-scale=1.0">
+    <style>
+        .container{
+            border:2px solid gray;
+            padding:40px 0px;
+            margin-left:18%;
+ margin-right:18%;
+margin-top:9%;
+margin-bottom:9%;
+            width:50%;
+            display:flex;
+box-shadow:0 0 8px 0px lightgray;
+border-radius:10px;
+background:white;
+        
+
+        }
+        .f{
+            width:80%;
+            padding:3px 5px;
+            color:gray;
+            border-radius: 15px;
+            margin-top:0px;
+font-weight:bold;
+height:20px;
+        }
+        .left{
+          
+          margin-right:50px;
+          float:left;
+          align-items:center;
+width:80%;
+flex:1;
+          }
+        .right{
+          margin-right:0px;
+          float:right;
+flex:1;}
+button{
+width:85%;
+height:30px;
+text-align:center;
+font-weight:bold;
+background:#00ff00;
+border-radius:15px;
+color:white;
+font-size:20px;
+margin-top:6px;
+}
+
+    </style>
+</head>
+<body style="background:rgb(105,105,105);">
+    <form action="{% url 'loginUser' %}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="left">
+            <img src="imgs.svg" alt="LOGIN" style="width:30px;height:30px;" >
+        </div>
+        <div class="right">
+        <h2 style="color: gray ;padding-left:50px;"><center>ADMIN LOGIN<center></h2>
+        <label><h3>USERNAME:-</h3></label><input type="text" name="uname" placeholder="Enter your Username" class="f">
+        <label><h3>PASSWORD:-</h3></label><input type="password" name="psw" placeholder="Enter your password" class="f"><br><br>
+       <button type="submit" name="submit">LOGIN</button> 
+       </div> 
+    </div>
+    </form>
+</body>
